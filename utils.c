@@ -26,7 +26,6 @@ void	error_message(char *text)
 		write(2, text, ft_strlen(text));
 	else
 		write(2, "Error: NULL message\n", 20);
-	exit (EXIT_FAILURE);
 }
 
 long long	get_time(void)
@@ -143,20 +142,4 @@ void	ft_wait(int duration, t_rules *rules)
 	}
 }
 
-int is_valid_arg(char *str)
-{
-    int i;
 
-    i = 0;
-    if (!str || str[0] == '\0')
-        return (0);
-    if (str[0] == '-' || str[0] == '+')
-        return (0);
-    while (str[i])
-    {
-        if (!isdigit(str[i]))
-            return (0);
-        i++;
-    }
-    return (1);
-}

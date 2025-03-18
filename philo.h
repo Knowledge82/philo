@@ -2,12 +2,13 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/time.h>
 
 #define GREEN   "\033[0;32m"
 #define RED     "\033[0;31m"
-#define RESET   "\033[0m" // сброс цвета в стандартный
+#define RESET   "\033[0m"
 
 typedef struct	s_rules
 {
@@ -39,9 +40,20 @@ typedef struct	s_philosopher
 //routine.c
 void	*life_routine(void *arg);
 
+//check_and_init.c
+int	is_valid_arg(char *str);
+int	check_args(int argc, char **argv);
+int	init_rules(t_rules *rules, int argc, char **argv);
+int	init_mutexes(t_rules *rules, pthread_mutex_t *forks);
+int	init_philosophers(t_philosopher **philos, pthread_mutex_t *forks, t_rules *rules);
+int	create_philosophers_threads(t_philosopher *philos);
+int	create_monitor_thread(pthread_t *monitor_thread, t_philosopher *philos);
+
+
 //utils.c
 int	ft_strlen(char *str);
 void	ft_print_msg(t_philosopher *philo, const char *msg);
+void	error_message(char *text);
 long long	get_time(void);
 void	*monitor_routine(void *arg);
 int	is_valid_arg(char *str);

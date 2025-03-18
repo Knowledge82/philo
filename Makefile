@@ -9,7 +9,7 @@ CFLAGS = -Wall -Wextra -Werror -pthread
 
 # Files
 
-SRCS = main.c routine.c utils.c
+SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 
 # Rules
