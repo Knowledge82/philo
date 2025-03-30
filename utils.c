@@ -70,8 +70,11 @@ void	check_death(t_philosopher *philo)
 int	check_meals(t_philosopher *philo)
 {
 	int	is_full;
+	int	i;
 
+	i = 0;
 	is_full = 0;
+	while(i < )
 	pthread_mutex_lock(&philo->rules->death_mutex);
 	if (philo->rules->must_eat > 0 && philo->meals_eaten >= philo->rules->must_eat)
 		is_full = 1;
